@@ -27,6 +27,7 @@ export default async function BanksPage({ searchParams }: Props) {
 
   const response = await fetch(
     `https://bank.teraren.com/banks.json?per=${per}`,
+    { cache: "force-cache" },
   ).then((res) => {
     console.log("Fetch response status:", res.status);
     return res;
