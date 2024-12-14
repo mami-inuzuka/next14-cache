@@ -1,3 +1,4 @@
+import { headers } from "next/headers";
 import Link from "next/link";
 
 type Props = {
@@ -15,8 +16,11 @@ export default async function TodoPage({ params }: Props) {
 
   const todo = await response.json();
 
+  const headersList = headers();
+  const referer = headersList.get("referer");
   return (
     <div>
+      Referer: {referer}
       <Link href="/">Home</Link>
       <h1>Todo</h1>
       <p>{todo.title}</p>
